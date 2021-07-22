@@ -1,0 +1,40 @@
+.simp{
+ display: flex;
+}
+.simp p{
+    width: 550px;
+    padding: 50px;
+}
+.simp img{
+    width: 300px;
+}
+.wrap {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    background: silver;
+}
+
+.card {
+    box-sizing: border-box;
+    width: 20%;
+    padding: 1%;
+    border: 1px solid;
+}
+
+.products-box {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.product-card {
+    box-sizing: border-box;
+    width: 25%;
+    padding: 2%;
+}
+
+.products-box div img {
+    width: 200px;
+    height: 200px;
+}
