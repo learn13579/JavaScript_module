@@ -54,11 +54,16 @@
   //     створити скріпт, котрий зчитує всі заголовки, та робить в блоці з id=content з них список(ul>li),
   //     який буде змістом того, що знаходиться на сторінці.
   //     Скріпт повинен працювати навіть якщо кількість блоків з заголовком та параграфом зміниться.
+  let h2s = document.getElementsByTagName('h2');
+  const content = document.getElementById('content');
+  const ul = document.createElement('ul');
+  for (let h2 of h2s) {
+    const li = document.createElement('li');
+    li.innerText = h2.innerText
+    ul.appendChild(li)
+  }
+  content.appendChild(ul)
 
-
-
-  let li = document.getElementsByTagName('h2');
-    console.log(li);
 
 
   // -Є масив котрий характеризує правила. Створити скрипт який ітерує цей масив, та робить з кожне правило в окремому блоці.
