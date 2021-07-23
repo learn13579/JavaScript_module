@@ -2,17 +2,34 @@
 // При відправці данних з форми, зберігати ім'я в localstorage, та переходити на index2.html.
 // На index2.html виводити записане в localstorage ім'я в div
 
+let {username} = document.forms.a;
+const btn = document.getElementById('btn');
+const mainDiv = document.getElementById('content');
+const content = JSON.parse(localStorage.getItem('name'));
 
-// - Імітуємо наповнення інтернет магазину товарами :
-//     Створити форму з наступними полями :
-// - назва товару
-// - кількість товару
-// - ціна товару
-// - картинка товару (посилання з інтернету)
-// Зберігати товари в масив в локалсорадж. При збережені товару з форми, action не повинно відбуватись.
-//     створити елемент <a href='list.html'> На сторінку товарів</a>, та list.html, при переході на який відобразити на сторінці всі товари.
-// На сторінці  list.html побудувати кнопку яка видаляє всі товари з корзини та локалстораджа.
-//     До кожного товару додати кнопку, при кліку на яку з лс видаляється конкретний обраний  товар
+const writeContent = () =>{
+    for (let item of content){
+        const itemDiv = document.createElement('div');
+        itemDiv.innerText = item;
+        mainDiv.appendChild(itemDiv);
+    }
+};
+
+btn.onclick = () => {
+    content.push(username.value);
+    localStorage.setItem('name', JSON.stringify(content));
+};
+
+// let username = document.forms.a;
+// const name = a.name;
+// const submit = a.submit;
+//
+// submit.onclick = function (){
+//     localStorage.setItem('xxx', name);
+// }
+
+// writeContent();
+
 
 
 // - З масиву users за допомогою циклу витягнути адреси користувачів і записати (скопіювати) їх в інший порожній масив.
@@ -77,11 +94,6 @@ let users = [{
     address: {city: 'Cairo', country: 'Egypt', street: 'Seashore', houseNumber: 45}
 }];
 
-// let address = [
+const map = users.map(value => value.address);
+console.log(map);
 
-// for (const user of users) {
-//
-//    return (address) ;
-// }
-
-// users.document.createElement

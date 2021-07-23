@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+<style>
+    .mar25 {
+        margin: 50px 25px 5px 50px;
+    }
+
+    .left{
+        margin: 50px 50px 50px 1000px;
+    }
+</style>
+
+</head>
+<body>
+<div class="mar25">
+    <form name="productName" id="pr1" action='list.html'>
+        <input type="text" name="name" placeholder="назва товару">
+        <input type="text" name="number" placeholder="кількість товару">
+        <input type="text" name="price" placeholder="ціна товару">
+        <input type="text" name="img" placeholder="картинка товару">
+        <button id="send">send</button>
+    </form>
+
+
+    <div class="mar25">
+        <a href='list.html'> На сторінку товарів</a>
+    </div>
+</div>
+    <script>
+
+        // - Імітуємо наповнення інтернет магазину товарами :
+        //     Створити форму з наступними полями :
+        // - назва товару
+        // - кількість товару
+        // - ціна товару
+        // - картинка товару (посилання з інтернету)
+        // Зберігати товари в масив в локалсорадж. При збережені товару з форми, action не повинно відбуватись.
+        //     створити елемент <a href='list.html'> На сторінку товарів</a>, та list.html, при переході на який відобразити на сторінці всі товари.
+        // На сторінці  list.html побудувати кнопку яка видаляє всі товари з корзини та локалстораджа.
+        //     До кожного товару додати кнопку, при кліку на яку з лс видаляється конкретний обраний  товар
+
+        // let product = [
+        //     {
+        //         name: 'Коротка сукня Nila',
+        //         number: 4,
+        //         price: 328,
+        //         img: 'https://cdn.shopify.com/s/files/1/0078/7513/3504/products/HN-NILA-549-HemantandNandita_800x.jpg?v=1615020093'
+        //     },
+        //     {
+        //         name: 'Довга сукня Nila',
+        //         number: 5,
+        //         price: 396,
+        //         img: 'https://cdn.shopify.com/s/files/1/0078/7513/3504/products/HN-NILA-574_1_800x.jpg?v=1625225710'
+        //     },
+        //     {
+        //         name: 'Кефи Додо Топ',
+        //         number: 7,
+        //         price: 149,
+        //         img: 'https://cdn.shopify.com/s/files/1/0078/7513/3504/products/HemantAndNanditaKefiTop_1_800x.jpg?v=1622186289'
+        //     },
+        //     {
+        //         name: 'Резинка для волосся Brio White',
+        //         number: 9,
+        //         price: 33,
+        //         img: 'https://cdn.shopify.com/s/files/1/0078/7513/3504/products/1_d3a6c585-d782-4a07-b821-3e8454be0c28_800x.jpg?v=1612946640'
+        //     },
+        //     {
+        //         name: 'Багатошарова спідниця Kefi',
+        //         number: 2,
+        //         price: 486,
+        //         img: 'https://cdn.shopify.com/s/files/1/0078/7513/3504/products/HemantandNanditaKefiSkirt_3_800x.jpg?v=1622186876'
+        //     },
+        //     {
+        //         name: 'Сукня-Рубашка Brio',
+        //         number: 3,
+        //         price: 368,
+        //         img: 'https://cdn.shopify.com/s/files/1/0078/7513/3504/products/H_N0804-copy_800x.jpg?v=1611126415'
+        //     }
+        // ];
+
+
+        const form = document.forms;
+        const {name, number, price, img} = form.productName;
+        // const form = document.forms.productName;
+        // const name = form.name;
+        // const number = form.number;
+        // const price = form.price;
+        // const img = form.img;
+        const arrStore = JSON.parse(localStorage.getItem('store')) || [];
+        const btn = document.getElementById('send');
+        btn.onclick = () => {
+            arrStore.push({name: name.value, number: number.value, price: price.value, img: img.value})
+            localStorage.setItem('store', JSON.stringify(arrStore))
+        }
+
+    </script>
+
+</body>
+</html>
