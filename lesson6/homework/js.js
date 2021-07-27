@@ -83,7 +83,6 @@ fetch('https://jsonplaceholder.typicode.com/posts')
 
 let userComents = document.getElementsByClassName('user-coments')[0];
 
-
 fetch('https://jsonplaceholder.typicode.com/comments')
     .then(value => value.json())
     .then(value => {
