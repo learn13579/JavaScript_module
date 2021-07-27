@@ -18,34 +18,35 @@ fetch('https://jsonplaceholder.typicode.com/users')
             let userName = document.createElement('h3');
             user.appendChild(userName);
 
-            userName.innerText =valueElement.id + " " + valueElement.name + " " + valueElement.username;
+            userName.innerText = valueElement.id + " " + valueElement.name + " " + valueElement.username;
 
             let btnPosts = document.createElement('button');
             let btnComments = document.createElement('button');
             btnPosts.innerText = 'posts';
-            btnComments.innerText = 'comments';
-            user.append(btnPosts, btnComments);
+
+            user.append(btnPosts);
             btnPosts.onclick = () => {
-                fetch(`https://jsonplaceholder.typicode.com/comments?postId=${value.userId}`)
+                fetch(`https://jsonplaceholder.typicode.com/posts?userId=${valueElement.id}`)
                     .then(value => value.json())
-                    .then(value => {
-                        let commentsBox = document.getElementsByClassName('comments')[0];
-                        commentsBox.innerText = valueElement.body;
-                        for (const commentsBox1 of commentsBox) {
-                            
-                        } 
-                        // for (const commentItem of commentsBox) {
-                        //     let commentDiv = document.createElement('div')[0];
-                        //     commentDiv.innerText = valueElement.body;
-                        //     user.append(commentDiv);
-                        // }
+                    .then(posts => {
+                        for (const post of posts) {
+                            let postDiv = document.createElement('div');
+                            postDiv.innerText = post.body;
+                            btnComments.innerText = 'comments';
+                            user.append(postDiv, btnComments);
+                            btnComments.onclick = () => {
+                                fetch(`https://jsonplaceholder.typicode.com/posts/${post.id}/comments`)
+                                    .then(value => value.json())
+                                    .then(comments => {
+                                        for (const comment of comments) {
+                                            let commentDiv = document.createElement('div');
+                                            commentDiv.innerText = comment.body;
+                                            user.append(commentDiv);
+                                        }
+                                    });
+                            }
+                        }
                     });
-            };
-
-
-
-
-
-
+            }
         }
     });
