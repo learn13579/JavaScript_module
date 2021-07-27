@@ -33,7 +33,6 @@ fetch('https://jsonplaceholder.typicode.com/posts')
                                 commentDiv.innerText = comment.body;
                             post.append(commentDiv);
                         }
-
                 });
             };
         }
