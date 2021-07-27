@@ -3,7 +3,6 @@
 // https://jsonplaceholder.typicode.com/users
 //     кожному елементу юзера створити кнопку, при клику на яку в окремий блок виводяться всі пости поточного юзера.
 //     Кожному елементу post створити кнопку, при клику на яку в окремий блок виводяться всі коментарі поточного поста
-
 let users = document.getElementsByClassName('users')[0];
 
 fetch('https://jsonplaceholder.typicode.com/users')
