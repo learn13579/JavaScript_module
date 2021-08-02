@@ -1,0 +1,29 @@
+
+/*<!--  // Стилизация проекта - -->*/
+/*<!--  // index.html - все блоки с user - по 2 в ряд. кнопки/ссылки находяться под информацией про user.-->*/
+/*<!--    // Все без исключения элементы, который характеризируют user,post,comment  визуализировать,*/
+/*           так, что бы было видно их блоки (дать задний фон + margin. Иными словами - крайне четкая сетка)-->*/
+
+ .users{
+     display:flex;
+     flex-wrap: wrap;
+     width: 100%;
+ }
+
+.userOl{
+    width: 49%;
+    height: 100px;
+    background: aquamarine;
+    margin: 0.5%;
+}
+
+.nameUser{
+    margin: 20px 20px 10px 20px;
+    background: silver;
+}
+
+.btnDetails{
+    margin: 10px 20px 20px 20px;
+
+}
+
