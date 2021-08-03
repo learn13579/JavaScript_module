@@ -11,19 +11,23 @@
  }
 
 .userOl{
-    width: 49%;
+    width: 48%;
     height: 100px;
     background: aquamarine;
     margin: 0.5%;
+    border: 3px solid deepskyblue;
+    border-radius: 10px;
+    text-align: center;
 }
 
 .nameUser{
     margin: 20px 20px 10px 20px;
     background: silver;
+    font-size: 20px;
+    border-radius: 25px;
 }
 
 .btnDetails{
     margin: 10px 20px 20px 20px;
-
 }
 

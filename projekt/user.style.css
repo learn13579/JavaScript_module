@@ -4,4 +4,32 @@
 /*<!--  // блоки с краткой информацией про post - в ряд по 5 объектов. -->*/
 /*<!--    // Все без исключения элементы, который характеризируют user,post,comment  визуализировать,*/
 /*     так, что бы было видно их блоки (дать задний фон + margin. Иными словами - крайне четкая сетка)-->*/
+.users {
+    width: 100%;
+    margin: 0;
+}
+
+.user{
+    background: aquamarine;
+    border: 2px solid deepskyblue;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 20px;
+}
+.btnPostTittle{
+    width: 90%;
+    height: 50px;
+    font-size: 20px;
+    border-radius: 20px;
+    border: 2px solid deepskyblue;
+    background: silver;
+    margin: 2%;
+    text-decoration: none;
+}
+
+h3{
+    width: border-box;
+    background: silver;
+    border: 2px solid deepskyblue;
+}
 

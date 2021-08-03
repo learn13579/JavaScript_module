@@ -15,14 +15,12 @@ fetch('https://jsonplaceholder.typicode.com/users')
             userName.innerText = `${user.id}. ${user.name} ${user.username}`;
 
             let btnDetails = document.createElement('button');
-            // btnDetails.innerText = 'details';
             btnDetails.classList.add('btnDetails');
             userOl.append(btnDetails);
 
-            let a = document.createElement('a');
-            a.innerText = 'details';
-            btnDetails.appendChild(a);
-            a.href =`user-details.html?user=${JSON.stringify(user)}`;
-
+            let detailsLink= document.createElement('a');
+            detailsLink.innerText = 'details';
+            detailsLink.href =`user-details.html?user=${JSON.stringify(user)}`;
+            btnDetails.appendChild(detailsLink);
         }
     });
