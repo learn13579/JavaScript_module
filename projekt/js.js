@@ -9,7 +9,7 @@ fetch('https://jsonplaceholder.typicode.com/users')
             usersN.appendChild(userOl);
             userOl.classList.add('userOl');
 
-            let userName = document.createElement('div');
+            let userName = document.createElement('p');
             userOl.appendChild(userName);
             userName.classList.add('nameUser');
             userName.innerText = `${user.id}. ${user.name} ${user.username}`;
