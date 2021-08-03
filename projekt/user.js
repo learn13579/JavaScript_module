@@ -6,7 +6,7 @@ console.log(user);
 // document.body.innerText = `${user.id} ${user.name} ${user.username} .  Email: ${user.email}, address: ${user.address.street}${user.address.suite}${user.address.city}${user.address.zipcode}, GEO: latitude: ${user.address.geo.lat} longitude: ${user.address.geo.lng} ${user.phone}${user.website}${user.company} `;
 
 // document.body.innerHTML = `<div class="user">
-//     <h3> ${user.name}   ${user.username}  </h3>
+//     <h3> ${user.id} ${user.name}   ${user.username}  </h3>
 //
 //     <p> <b>Email:</b>  ${user.email} </br>
 //     <b>phone:</b>  ${user.phone}</br>
@@ -21,11 +21,30 @@ console.log(user);
 //     </p>
 //     <p> <b>Company:</b> </br>   <b>Name company:</b>${user.company.name} </br> <b>Catch phrase:</b> ${user.company.catchPhrase} </br> <b>bs:</b> ${user.company.bs}
 //     </p>
-// <!--    <button class="btnPostTittle">post of current user</button>-->
 //     </div>`;
 
-
 const usersCom = document.getElementsByClassName('users')[0];
+let info = document.createElement("div");
+info.classList.add('user');
+usersCom .appendChild(info);
+
+let h = document.createElement("h3");
+info.appendChild(h);
+h.innerText = `${user.id} ${user.name}   ${user.username} `;
+
+let p = document.createElement("p");
+info.appendChild(p);
+p.innerText = `Email: ${user.email}, phone: ${user.phone},  website:  ${user.website}`;
+
+let p2 = document.createElement("p");
+info.appendChild(p2);
+p2.innerText = `Address: city: ${user.address.city}, street:  ${user.address.street}, suite: ${user.address.suite}, zipcode: ${user.address.zipcode}, GEO:  latitude:  ${user.address.geo.lat}, longitude:  ${user.address.geo.lng}`;
+
+let p3 = document.createElement("p");
+info.appendChild(p3);
+p3.innerText = `Company:  Name company: ${user.company.name}, Catch phrase: ${user.company.catchPhrase}, bs:${user.company.bs}`
+
+
 // const usersCom = document.createElement('div')[0];
 let btnPostTitle=document.createElement("button");
 usersCom.appendChild(btnPostTitle);
@@ -61,7 +80,7 @@ btnPostTitle.classList.add('btnPostTittle');
                     .then(details => {
                         for (const detail of details) {
                             let detailsDiv = document.createElement('div');
-                            titlePosts.appendChild(detailsDiv);
+                            usersCom .appendChild(detailsDiv);
                             detailsDiv.classList.add('detailsDiv');
                             detailsDiv.innerText = detail.body;
                             btnPost.href = `post-details.html?user=${JSON.stringify(details)}`
