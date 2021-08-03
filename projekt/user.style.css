@@ -44,6 +44,9 @@ h3{
     background: silver;
     border-radius: 5px;
     margin: 1%;
-    background: silver;
     border: 2px solid deepskyblue;
+}
+.detailsDiv{
+    text-align: left;
+    font-size: 18px;
 }

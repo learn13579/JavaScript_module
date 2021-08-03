@@ -37,7 +37,7 @@ btnPostTitle.classList.add('btnPostTittle');
             // btnPostTitle.onclick = `${user.title}`;
 
    btnPostTitle.onclick = ()  => {
-    fetch(`https://jsonplaceholder.typicode.com/users`)
+    fetch(`https://jsonplaceholder.typicode.com/user/${user.id}/posts`)
         .then(value => value.json())
         .then( value=> {
             for (const valueElement of value) {
@@ -62,6 +62,8 @@ btnPostTitle.classList.add('btnPostTittle');
                         for (const detail of details) {
                             let detailsDiv = document.createElement('div');
                             titlePosts.appendChild(detailsDiv);
+                            detailsDiv.classList.add('detailsDiv');
+                            detailsDiv.innerText = detail.body;
                             btnPost.href = `post-details.html?user=${JSON.stringify(details)}`
                             // titlePosts.appendChild(btnPost);
                         }
