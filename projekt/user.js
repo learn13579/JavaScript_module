@@ -78,7 +78,7 @@ usersPostAll.classList.add('usersPostAll');
                 titlePosts.appendChild(btnPost);
                 btnPost.innerText = 'read the post';
 
-                btnPost.onclick= () => {
+                btnPost.onclick = () => {
                 fetch(`https://jsonplaceholder.typicode.com/user/${user.id}/posts`)
                     .then(value => value.json())
                     .then(details => {
@@ -86,9 +86,11 @@ usersPostAll.classList.add('usersPostAll');
                             let detailsDiv = document.createElement('div');
                             titlePosts.appendChild(detailsDiv);
                             detailsDiv.classList.add('detailsDiv');
-                            detailsDiv.innerText = detail.body;
-                            btnPost.href = `post-details.html?user=${JSON.stringify(details)}`
-                            // titlePosts.appendChild(btnPost);
+                            detailsDiv.innerText = detail.body
+
+                            let detailPostLink= document.createElement('a');
+                            btnPost.appendChild(detailPostLink);
+                            detailPostLink.href = `post-details.html?post=${JSON.stringify(detail)}`
                         }
                     });
             }
