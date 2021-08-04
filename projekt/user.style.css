@@ -13,7 +13,7 @@
 
 .btnPostTittle{
     width: 90%;
-    height: 45px;
+    height: 30px;
     font-size: 20px;
     border-radius: 5px;
     border: 2px solid deepskyblue;
@@ -21,12 +21,18 @@
     margin: 2% 5% 2% 5%;
     text-decoration: none;
 }
+.btnPostTittle:hover{
+    background: deepskyblue;
+    transition: 400ms;
+}
+
 
 h3{
     width: border-box;
     background: silver;
     border: 2px solid deepskyblue;
 }
+
 .titlePosts{
     /*margin: 4%;*/
     text-align: center;
@@ -53,4 +59,8 @@ h3{
     display: flex;
     width: 100%;
     flex-wrap: wrap;
+}
+
+a{
+    text-decoration: none;
 }

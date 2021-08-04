@@ -1,33 +1,39 @@
-const doFetch = async (url) => {
-    const basicURL = 'https://jsonplaceholder.typicode.com';
+const url = new URL(location);
+const JOSONUser = url.searchParams.get('post');
+const post = JSON.parse(JOSONUser);
 
-    const response = await fetch(basicURL + url);
-    return response.json();
-}
+const posts = document.getElementsByClassName('posts')[0];
 
-const getPosts = async (userId, parentElement)  => {
-    const posts = await doFetch(`/posts?userId=${userId}`);
+// div для постів
+let postUser = document.createElement('div');
+postUser.classList.add('postUser');
+posts.appendChild(postUser);
+let h = document.createElement('h3');
+h.innerText = `${user.title}`;
+let p = document.createElement('p');
+p.innerText = `${user.body}`;
+postUser.append(h, p);
 
-    for (const post of posts) {
-        let postDiv = document.createElement('div');
-        let btnComments = document.createElement('button');
-        postDiv.innerHTML = `<b>${post.id}. ${post.body}</b>`;
-        btnComments.innerText = 'comments';
-        postDiv.append(btnComments);
-        parentElement.append(postDiv);
+// div для коментарів
+let commentsUser = document.createElement('div');
+commentsUser.classList.add('commentsUser');
+posts.appendChild(commentsUser);
 
-        btnComments.onclick = () => {
-            getComments(post.id, postDiv);
+fetch(`https://jsonplaceholder.typicode.com/posts/${posts.id}/comments`)
+    .then(value => value.json())
+    .then(value => {
+        for (const valueElement of value) {
+            let postId = document.createElement("h3");
+            postId.innerText = `Post Id: ${posts.id}`;
+
+            let emailUser = document.createElement("h3");
+            emailUser.innerText = `email: ${posts.email}  `;
+
+            let comBody = document.createElement("p");
+            // comBody.innerText = valueElement.body;
+            comBody.innerText = `comment: ${posts.body}`;
+
+            commentsUser.append(postId, emailUser, comBody);
         }
-    }
-}
+    });
 
-const getComments = async (postId, parentElement) => {
-    const comments = await doFetch(`/posts/${postId}/comments`);
-
-    for (const comment of comments) {
-        let commentDiv = document.createElement('div');
-        commentDiv.innerHTML = `<hr/>${comment.id}. ${comment.body}<hr/>`;
-        parentElement.append(commentDiv);
-    }
-}

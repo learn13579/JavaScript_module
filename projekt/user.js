@@ -27,42 +27,37 @@ const user = JSON.parse(JOSONUser);
 const usersCom = document.getElementsByClassName('users')[0];
 let info = document.createElement("div");
 info.classList.add('user');
-usersCom .appendChild(info);
+usersCom.appendChild(info);
 
 let h = document.createElement("h3");
-info.appendChild(h);
 h.innerText = `${user.id} ${user.name}   ${user.username} `;
 
 let p = document.createElement("p");
-info.appendChild(p);
 p.innerText = `Email: ${user.email}, phone: ${user.phone},  website:  ${user.website}`;
 
 let p2 = document.createElement("p");
-info.appendChild(p2);
 p2.innerText = `Address: city: ${user.address.city}, street:  ${user.address.street}, suite: ${user.address.suite}, zipcode: ${user.address.zipcode}, GEO:  latitude:  ${user.address.geo.lat}, longitude:  ${user.address.geo.lng}`;
 
 let p3 = document.createElement("p");
-info.appendChild(p3);
 p3.innerText = `Company:  Name company: ${user.company.name}, Catch phrase: ${user.company.catchPhrase}, bs:${user.company.bs}`
 
+info.append(h, p, p2, p3);
 
-// const usersCom = document.createElement('div')[0];
-let btnPostTitle=document.createElement("button");
+
+let btnPostTitle = document.createElement("button");
 usersCom.appendChild(btnPostTitle);
 btnPostTitle.innerText = 'post of current user';
 btnPostTitle.classList.add('btnPostTittle');
 
-// дів для постів
 let usersPostAll = document.createElement('div');
 btnPostTitle.appendChild(usersPostAll);
 usersPostAll.classList.add('usersPostAll');
 
-// let btnPostTitle = document.getElementsByClassName('btnPostTittle')[0];
 
-   btnPostTitle.onclick = ()  => {
+btnPostTitle.onclick = () => {
     fetch(`https://jsonplaceholder.typicode.com/user/${user.id}/posts`)
         .then(value => value.json())
-        .then( value=> {
+        .then(value => {
             for (const valueElement of value) {
 
                 let titlePosts = document.createElement("div");
@@ -71,60 +66,58 @@ usersPostAll.classList.add('usersPostAll');
 
                 let pPost = document.createElement('p');
                 pPost.innerText = valueElement.title;
-                titlePosts.appendChild(pPost);
 
-                let btnPost = document.createElement('button');
-                btnPost.classList.add('btnPost');
-                titlePosts.appendChild(btnPost);
-                btnPost.innerText = 'read the post';
+                let detailsDiv = document.createElement('div');
+                detailsDiv.classList.add('detailsDiv');
 
-                btnPost.onclick = () => {
+                let aPost = document.createElement('a');
+                aPost.classList.add('btnPost');
+                aPost.innerText = 'read the post';
+
+                titlePosts.append(pPost, detailsDiv, aPost);
+
+
                 fetch(`https://jsonplaceholder.typicode.com/user/${user.id}/posts`)
                     .then(value => value.json())
                     .then(details => {
                         for (const detail of details) {
-                            let detailsDiv = document.createElement('div');
-                            titlePosts.appendChild(detailsDiv);
-                            detailsDiv.classList.add('detailsDiv');
-                            detailsDiv.innerText = detail.body
-
-                            let detailPostLink= document.createElement('a');
-                            btnPost.appendChild(detailPostLink);
-                            detailPostLink.href = `post-details.html?post=${JSON.stringify(detail)}`
+                            aPost.href = `post-details.html?post=${JSON.stringify(detail)}`
                         }
                     });
-            }
+
+                // let btnPost = document.createElement('button');
+                // btnPost.classList.add('btnPost');
+                // titlePosts.appendChild(btnPost);
+                // btnPost.innerText = 'read the post';
+
+
+                // let btnPost = document.createElement('button');
+                // btnPost.classList.add('btnPost');
+                // titlePosts.appendChild(btnPost);
+                // btnPost.innerText = 'read the post';
+
+                //     btnPost.onclick = () => {
+                //     fetch(`https://jsonplaceholder.typicode.com/user/${user.id}/posts`)
+                //         .then(value => value.json())
+                //         .then(details => {
+                //             for (const detail of details) {
+                //                 let detailsDiv = document.createElement('div');
+                //                 titlePosts.appendChild(detailsDiv);
+                //                 detailsDiv.classList.add('detailsDiv');
+                //                 detailsDiv.innerText = detail.body
+                //
+                //                 let detailPostLink= document.createElement('a');
+                //                 // btnPost.appendChild(detailPostLink);
+                //                 detailPostLink.href = `post-details.html?post=${JSON.stringify(detail)}`
+                //             }
+                //         });
+                // }
+
+
             }
         });
 };
 
-// const usersCom = document.getElementsByClassName('users')[0];
-
-// fetch(`https://jsonplaceholder.typicode.com/users`)
-//     .then(value => value.json())
-//     .then(posts => {
-//         console.log(posts);
-//         for (const post of posts) {
-//             const userC = document.createElement('div');
-//             usersCom.appendChild(userC);
-//
-
-//             const btnPost = document.createElement('button');
-//             btnPost.innerText = 'read the post';
-//             btnPost.classList.add('btnPost');
-//             usersCom.append(btnPost);
-//             btnPost.onclick = () => {
-//                 fetch(`https://jsonplaceholder.typicode.com/users/${users.id}`)
-//                     .then(value => value.json())
-//                     .then(details => {
-//                         for (const detail of details) {
-//                             let detailsDiv = document.createElement('div');
-//                             btnPost.href = `post-details.html?user=${JSON.stringify(user)}`
-//                         }
-//                     });
-//             }
-//         }
-//     });
 
 
 

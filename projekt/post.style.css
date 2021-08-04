@@ -3,3 +3,27 @@
 /*<!--    // Все без исключения элементы, который характеризируют user,post,comment  визуализировать,*/
 /*           так, что бы было видно их блоки (дать задний фон + margin. Иными словами - крайне четкая сетка)-->*/
 
+.postUser{
+    background: aquamarine;
+    border: 3px solid deepskyblue;
+    border-radius: 10px;
+    text-align: center;
+}
+
+h3{
+    margin: 20px 20px 10px 20px;
+    background: silver;
+    font-size: 20px;
+    border-radius: 25px;
+}
+
+.commentsUser{
+    width: 100%;
+    display: flex;
+}
+
+.com{
+    width: 24%;
+    margin: 0.5%;
+    border: 3px solid deepskyblue;
+}
