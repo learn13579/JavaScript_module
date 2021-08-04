@@ -1,7 +1,8 @@
 const url = new URL(location);
 const JOSONUser = url.searchParams.get('user');
 const user = JSON.parse(JOSONUser);
-console.log(user);
+// console.log(user);
+
 
 // document.body.innerText = `${user.id} ${user.name} ${user.username} .  Email: ${user.email}, address: ${user.address.street}${user.address.suite}${user.address.city}${user.address.zipcode}, GEO: latitude: ${user.address.geo.lat} longitude: ${user.address.geo.lng} ${user.phone}${user.website}${user.company} `;
 
@@ -51,9 +52,12 @@ usersCom.appendChild(btnPostTitle);
 btnPostTitle.innerText = 'post of current user';
 btnPostTitle.classList.add('btnPostTittle');
 
-// usersCom.append(user);
+// дів для постів
+let usersPostAll = document.createElement('div');
+btnPostTitle.appendChild(usersPostAll);
+usersPostAll.classList.add('usersPostAll');
+
 // let btnPostTitle = document.getElementsByClassName('btnPostTittle')[0];
-            // btnPostTitle.onclick = `${user.title}`;
 
    btnPostTitle.onclick = ()  => {
     fetch(`https://jsonplaceholder.typicode.com/user/${user.id}/posts`)
@@ -63,7 +67,7 @@ btnPostTitle.classList.add('btnPostTittle');
 
                 let titlePosts = document.createElement("div");
                 titlePosts.classList.add('titlePosts');
-                btnPostTitle.appendChild(titlePosts);
+                usersPostAll.appendChild(titlePosts);
 
                 let pPost = document.createElement('p');
                 pPost.innerText = valueElement.title;
@@ -80,7 +84,7 @@ btnPostTitle.classList.add('btnPostTittle');
                     .then(details => {
                         for (const detail of details) {
                             let detailsDiv = document.createElement('div');
-                            usersCom .appendChild(detailsDiv);
+                            titlePosts.appendChild(detailsDiv);
                             detailsDiv.classList.add('detailsDiv');
                             detailsDiv.innerText = detail.body;
                             btnPost.href = `post-details.html?user=${JSON.stringify(details)}`
