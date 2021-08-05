@@ -30,7 +30,7 @@ fetch(`https://jsonplaceholder.typicode.com/posts/${post.id}/comments`)
             commentsUser.appendChild(divComment);
 
             let postId = document.createElement('h3');
-            postId.innerText = `Post Id: ${valueElement.id}`;
+            postId.innerText = `Comment Id: ${valueElement.id}`;
 
             let emailUser = document.createElement('h4');
             emailUser.innerText = `email user: ${valueElement.email}`;
