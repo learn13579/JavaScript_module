@@ -55,13 +55,15 @@ btnPostTitle.onclick = () => {
 
                 titlePosts.append(pPost, detailsDiv, aPost);
 
-                fetch(`https://jsonplaceholder.typicode.com/user/${user.id}/posts`)
-                    .then(value => value.json())
-                    .then(details => {
-                        for (const detail of details) {
-                            aPost.href = `post-details.html?post=${JSON.stringify(detail)}`
-                        }
-                    });
+                aPost.href = `post-details.html?post=${JSON.stringify(valueElement)}`
+
+                // fetch(`https://jsonplaceholder.typicode.com/user/${user.id}/posts`)
+                //     .then(value => value.json())
+                //     .then(details => {
+                //         // for (const detail of details) {
+                //
+                //         // }
+                //     });
             }
         });
 };
